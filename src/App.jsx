@@ -15,16 +15,14 @@ function App() {
 
   return (
     <Box
-      sx={
-        {
-          // mt: "2rem",
-          // width: "95%",
-          // height: "95vh",
-          //    display: "flex",
-          // justifyContent: "center",
-          // alignItems: "center",
-        }
-      }
+      sx={{
+        mt: "2rem",
+        width: "95%",
+        height: "95vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
       {/* <Famosos setFamosoSel={setFamosoSel} /> */}
       {/* <Principal famosoSel={famosoSel} /> */}
