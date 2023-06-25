@@ -259,11 +259,11 @@ function SeleccionPersonaje({ setPersonajeSel, personajeSel }) {
         },
       }}
     >
-      {/* <ReproductorDeTexto
+      <ReproductorDeTexto
         leer={leer}
         texto={heroes[1].description}
         voz="es-MX"
-      /> */}
+      />
       <Carousel
         navButtonsWrapperProps={{
           style: {

@@ -8,60 +8,176 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ImageIcon from "@mui/icons-material/Image";
-
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Badge from "@mui/material/Badge";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link as ScrollLink } from "react-scroll";
+
 import {
   Accordion,
   AccordionSummary,
   Avatar,
   Box,
+  Icon,
+  IconButton,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Stack,
+  ToggleButton,
+  ToggleButtonGroup,
 } from "@mui/material";
+import ReproductorDeTexto from "../../utils/ReproductorDeTexto";
 
-const CardPersonaje = ({ heroe }) => {
+const CardPersonaje = ({
+  heroe,
+  leer,
+  setLeer,
+  setPersonajeSel,
+  personajeSel,
+}) => {
+  const [seccion, setSeccion] = React.useState(0);
+  const [isSelected, setIsSelected] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log(personajeSel);
+    if (personajeSel.name == heroe.name) setIsSelected(true);
+    else setIsSelected(false);
+  }, [personajeSel]);
+
+  const handleChangeButtonGrup = (newSeccion) => {
+    console.log(newSeccion.target.value);
+    setSeccion(newSeccion.target.value);
+  };
+
+  const handleLeer = () => {
+    setLeer(!leer);
+  };
+
   return (
-    <Box border="1px solid blue">
+    <Box
+      sx={{
+        width: "95%",
+        m: "auto",
+      }}
+    >
+      <ReproductorDeTexto leer={leer} texto={heroe.description} voz="es-MX" />
       <Card>
-        <CardMedia
-          component="img"
-          alt={heroe.name}
-          height="600"
-          width="400"
-          image={heroe.imagen}
-        />
+        <Box>
+          {isSelected ? (
+            <CardMedia
+              component="img"
+              alt={heroe.name}
+              image={heroe.imagen}
+              sx={{
+                width: "94%",
+                m: "auto",
+                height: 380,
+                border: "8px solid blue", //Estilo Contenedor
+                borderRadius: "20px", //Estilo Contenedor
+                padding: "0.5rem", //Estilo Contenedor
+              }}
+            />
+          ) : (
+            <CardMedia
+              component="img"
+              alt={heroe.name}
+              image={heroe.imagen}
+              sx={{
+                width: "95%",
+                m: "auto",
+                height: 400,
+
+                borderRadius: "20px", //Estilo Contenedor
+                padding: "0.5rem", //Estilo Contenedor
+              }}
+            />
+          )}
+        </Box>
         <CardContent>
-          <Typography gutterBottom variant="h4" component="div">
-            {heroe.name}
-          </Typography>
+          <Box
+            // onClick={handleDesplazamiento}
+            component={ScrollLink}
+            to={"finDes"} // Especifica el destino de desplazamiento
+            spy={true}
+            smooth={true}
+            duration={2000}
+          >
+            <Stack direction="row">
+              <Typography gutterBottom variant="h4" component="div">
+                {heroe.name}
+              </Typography>
+              <IconButton sx={{ mb: 2 }} onClick={handleLeer}>
+                {leer ? <VolumeUpIcon /> : <VolumeOffIcon />}
+              </IconButton>
+            </Stack>
+          </Box>
           <Carousel
+            indicators={false}
+            index={Number(seccion)}
             navButtonsWrapperProps={false}
             navButtonsProps={false}
             autoPlay={false}
-            animation="slide"
-            duration="2000"
+            animation="fade"
+            duration="600"
             navButtonsAlwaysInvisible={true}
             // navButtonsAlwaysVisible={true}
             next={() => {}}
             prev={() => {}}
           >
-            <Box sx={{ width: "90%", m: "auto", height: "parent" }}>
-              <Typography variant="body1" color="text.secondary">
-                {heroe.description}
-              </Typography>
+            {/* HISTORIA */}
+            <Box
+              sx={{
+                overflow: "auto",
+                maxHeight: 300,
+                scrollbarWidth: "thin", // Cambia "thin" a "auto" o "none" si prefieres otro estilo de barra de desplazamiento
+                scrollbarColor: "lightgray darkgray", // Cambia "lightgray" y "darkgray" a los colores que desees para la barra de desplazamiento
+                "&::-webkit-scrollbar": {
+                  width: "6px", // Cambia el ancho de la barra de desplazamiento
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  background: "darkgray", // Cambia el color del pulgar de la barra de desplazamiento
+                  borderRadius: "5px", // Cambia el radio de borde del pulgar de la barra de desplazamiento
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  background: "gray", // Cambia el color del pulgar de la barra de desplazamiento en estado hover
+                },
+                "&::-webkit-scrollbar-track": {
+                  background: "lightgray", // Cambia el color de fondo de la barra de desplazamiento
+                  borderRadius: "5px", // Cambia el radio de borde de la barra de desplazamiento
+                },
+              }}
+            >
+              <div id="finDes">
+                {/* Contenido del componente de destino */}
+                <Stack direction="row">
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{ m: 2 }}
+                  >
+                    {heroe.description.split("/n").map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </Typography>
+                </Stack>
+              </div>
             </Box>
 
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                height: "parent",
+                height: 300,
               }}
             >
-              {/* Se repite por cada atributo */}
+              {/* CARACTERISTICAS*/}
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
@@ -72,56 +188,83 @@ const CardPersonaje = ({ heroe }) => {
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
-                <Typography>Energia</Typography>
+                <Typography>Ene</Typography>
                 <Avatar>{heroe.energia}</Avatar>
               </Stack>
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
-                <Typography>Fuerza</Typography>
+                <Typography>Fue</Typography>
                 <Avatar>{heroe.fuerza}</Avatar>
               </Stack>
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
-                <Typography>Intelig</Typography>
+                <Typography>Int</Typography>
                 <Avatar>{heroe.inteligencia}</Avatar>
               </Stack>
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
-                <Typography>Magia</Typography>
+                <Typography>Mag</Typography>
                 <Avatar>{heroe.magia}</Avatar>
               </Stack>
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
-                <Typography>Resist</Typography>
+                <Typography>Res</Typography>
                 <Avatar>{heroe.resistencia}</Avatar>
               </Stack>
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
-                <Typography>Armadura</Typography>
+                <Typography>Arm</Typography>
                 <Avatar>{heroe.armadura}</Avatar>
               </Stack>
               <Stack
                 sx={{ alignItems: "center", justifyContent: "center", mr: 3 }}
               >
-                <Typography>Velocidad</Typography>
+                <Typography>Vel</Typography>
                 <Avatar>{heroe.velocidad}</Avatar>
               </Stack>
             </Box>
-            <Box>
+            <Box
+              sx={{
+                overflow: "auto",
+                maxHeight: 300,
+                scrollbarWidth: "thin", // Cambia "thin" a "auto" o "none" si prefieres otro estilo de barra de desplazamiento
+                scrollbarColor: "lightgray darkgray", // Cambia "lightgray" y "darkgray" a los colores que desees para la barra de desplazamiento
+                "&::-webkit-scrollbar": {
+                  width: "6px", // Cambia el ancho de la barra de desplazamiento
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  background: "darkgray", // Cambia el color del pulgar de la barra de desplazamiento
+                  borderRadius: "5px", // Cambia el radio de borde del pulgar de la barra de desplazamiento
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  background: "gray", // Cambia el color del pulgar de la barra de desplazamiento en estado hover
+                },
+                "&::-webkit-scrollbar-track": {
+                  background: "lightgray", // Cambia el color de fondo de la barra de desplazamiento
+                  borderRadius: "5px", // Cambia el radio de borde de la barra de desplazamiento
+                },
+              }}
+            >
               {/* EQUIPAMIENTO */}
               <List
-                sx={{ width: "100%", bgcolor: "background.paper", m: "auto" }}
+                sx={{
+                  height: 300,
+                  bgcolor: "background.paper",
+                  m: "auto",
+                }}
               >
                 {heroe.items.map((item) => {
                   return (
                     <ListItem sx={{ width: "90%", m: "auto" }}>
                       <ListItemAvatar>
-                        <Avatar>P</Avatar>
+                        <Badge badgeContent={item.cantidad} color="primary">
+                          <Avatar src={item.imagen}></Avatar>
+                        </Badge>
                       </ListItemAvatar>
                       <ListItemText
                         primary={item.nombre}
@@ -135,13 +278,31 @@ const CardPersonaje = ({ heroe }) => {
           </Carousel>
         </CardContent>
         <CardActions>
-          <Button variant="contained" size="small" color="primary">
-            Seleccionar
-          </Button>
-          <Button size="small">Historia</Button>
-          <Button size="small">Características</Button>
-
-          <Button size="small">Equipamiento</Button>
+          <Box sx={{ m: "auto" }}>
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              sx={{ mr: 1, py: 1.5 }}
+              onClick={() => {
+                setPersonajeSel(heroe);
+                setIsSelected(true);
+              }}
+            >
+              Seleccionar
+            </Button>
+            <ToggleButtonGroup
+              color="primary"
+              value={Number(seccion)}
+              exclusive
+              onChange={handleChangeButtonGrup}
+              aria-label="Platform"
+            >
+              <ToggleButton value={0}>HISTORIA</ToggleButton>
+              <ToggleButton value={1}>CARACTERÍSTICAS</ToggleButton>
+              <ToggleButton value={2}>EQUIPO</ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
         </CardActions>
       </Card>
     </Box>
