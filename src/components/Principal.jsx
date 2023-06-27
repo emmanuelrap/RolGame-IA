@@ -132,61 +132,6 @@ function Principal({
       });
   }
 
-  // async function OpenIA() {
-  //   //Mandar mi pregunta al chat
-  //   const nuevaPregunta = {
-  //     key: uuidv4(),
-  //     content: message,
-  //     tipoMensaje: "pregunta",
-  //     role: "user",
-  //   };
-  //   setMensajes([...mensajes, nuevaPregunta]);
-  //   setLoading(true);
-
-  //   const APIBody = {
-  //     model: tipoModelo,
-  //     prompt:
-  //       "Quiero que me respondas a mi pregunta o comentario como si tú fueras" +
-  //       // famosoSel.nombre +
-  //       ":" +
-  //       message,
-  //     temperature: nivelRespuesta,
-  //     max_tokens: 300,
-  //     top_p: nivelRespuesta,
-  //     //+Variabilidad -Certeza
-  //     frequency_penalty: 0.9,
-  //     //+Originalidad -Enfoque
-  //     presence_penalty: 0.5,
-  //   };
-
-  //   await fetch("https://api.openai.com/v1/completions", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer " + API_KEY,
-  //     },
-  //     body: JSON.stringify(APIBody),
-  //   })
-  //     .then((data) => {
-  //       return data.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //       const respuesta = {
-  //         key: uuidv4(),
-  //         content: data.choices[0].text.trim(),
-  //         urlAvatar: famosoSel.urlAvatar,
-  //         tipoMensaje: "respuesta",
-  //         role: "system",
-  //       };
-  //       let arreglo = mensajes;
-  //       arreglo.push(nuevaPregunta);
-  //       arreglo.push(respuesta);
-  //       setMensajes(arreglo);
-  //       setLoading(false);
-  //     });
-  // }
-
   //**************  H A N D L E S **********************//
 
   const handleKeyDown = (e) => {
@@ -200,7 +145,7 @@ function Principal({
   };
 
   return (
-    <Box sx={{ width: "100%", height: "100%" }}>
+    <Box sx={{ width: "95%", height: "95%" }}>
       <BarraEstadisticas
         personajeSel={personajeSel}
         aventuraSel={aventuraSel}
@@ -246,7 +191,7 @@ function Principal({
       <TextField
         onKeyDown={handleKeyDown}
         disabled={loading}
-        sx={{ width: "90%", mx: 0, mt: 1, ml: "5%" }}
+        sx={{ width: "90%", mx: 0, mt: 3, ml: "7%" }}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder={"Escribe qui tu respuesta..."}

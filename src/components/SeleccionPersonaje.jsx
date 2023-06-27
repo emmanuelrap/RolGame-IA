@@ -20,7 +20,7 @@ function SeleccionPersonaje({ setPersonajeSel, personajeSel, setPaso }) {
   return (
     <Box
       width="90%"
-      height="100%"
+      height="90%"
       sx={{
         border: "2px solid #e0e0e0",
         borderRadius: "8px",
@@ -71,7 +71,7 @@ function SeleccionPersonaje({ setPersonajeSel, personajeSel, setPaso }) {
         ))}
       </Carousel>
       <Button
-        sx={{ m: 3 }}
+        sx={{ m: 0 }}
         disabled={personajeSel == ""}
         onClick={() => setPaso(1)}
       >

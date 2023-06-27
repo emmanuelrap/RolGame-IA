@@ -74,12 +74,12 @@ const CardPersonaje = ({
               alt={heroe.name}
               image={heroe.imagen}
               sx={{
-                width: "94%",
+                width: "92%",
                 m: "auto",
-                height: 380,
-                border: "8px solid blue", //Estilo Contenedor
-                borderRadius: "20px", //Estilo Contenedor
-                padding: "0.5rem", //Estilo Contenedor
+                height: 280,
+                border: "10px solid blue", //Estilo Contenedor
+                borderRadius: "25px", //Estilo Contenedor
+                padding: "0.2rem", //Estilo Contenedor
               }}
             />
           ) : (
@@ -90,7 +90,7 @@ const CardPersonaje = ({
               sx={{
                 width: "95%",
                 m: "auto",
-                height: 400,
+                height: 290,
 
                 borderRadius: "20px", //Estilo Contenedor
                 padding: "0.5rem", //Estilo Contenedor
@@ -133,7 +133,7 @@ const CardPersonaje = ({
             <Box
               sx={{
                 overflow: "auto",
-                maxHeight: 300,
+                maxHeight: 280,
                 scrollbarWidth: "thin", // Cambia "thin" a "auto" o "none" si prefieres otro estilo de barra de desplazamiento
                 scrollbarColor: "lightgray darkgray", // Cambia "lightgray" y "darkgray" a los colores que desees para la barra de desplazamiento
                 "&::-webkit-scrollbar": {
@@ -175,7 +175,7 @@ const CardPersonaje = ({
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                height: 300,
+                height: 280,
               }}
             >
               {/* CARACTERISTICAS*/}
@@ -232,7 +232,7 @@ const CardPersonaje = ({
             <Box
               sx={{
                 overflow: "auto",
-                maxHeight: 300,
+                maxHeight: 280,
                 scrollbarWidth: "thin", // Cambia "thin" a "auto" o "none" si prefieres otro estilo de barra de desplazamiento
                 scrollbarColor: "lightgray darkgray", // Cambia "lightgray" y "darkgray" a los colores que desees para la barra de desplazamiento
                 "&::-webkit-scrollbar": {
@@ -254,7 +254,7 @@ const CardPersonaje = ({
               {/* EQUIPAMIENTO */}
               <List
                 sx={{
-                  height: 300,
+                  height: 280,
                   bgcolor: "background.paper",
                   m: "auto",
                 }}

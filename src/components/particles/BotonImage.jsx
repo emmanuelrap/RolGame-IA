@@ -31,10 +31,10 @@ const images = [
 
 const BotonImage = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
-  height: 200,
+  height: 180,
   [theme.breakpoints.down("sm")]: {
     width: "100% !important", // Overrides inline-style
-    height: 150,
+    height: 140,
   },
   "&:hover, &.Mui-focusVisible": {
     zIndex: 1,
@@ -79,7 +79,7 @@ const ImageBackdrop = styled("span")(({ theme }) => ({
   top: 0,
   bottom: 0,
   backgroundColor: theme.palette.common.black,
-  opacity: 0.7,
+  opacity: 0.8,
   transition: theme.transitions.create("opacity"),
 }));
 
@@ -101,7 +101,7 @@ export default function ButtonBases({ setPaso, setAventuraSel, aventuraSel }) {
     setAventuraSel(e.target.innerText);
   };
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", minWidth: 800 }}>
+    <Box sx={{ display: "flex", flexWrap: "wrap", minWidth: 700 }}>
       {images.map((image) => (
         <BotonImage
           id={images.title}
