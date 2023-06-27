@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 function ReproductorDeTexto({ texto, voz, leer }) {
   useEffect(() => {
-    console.log(texto);
+    //console.log(texto);
     // Creamos una instancia de la síntesis de voz y detenemos existentes
     var synthesis = window.speechSynthesis;
     synthesis.cancel();
@@ -15,7 +15,7 @@ function ReproductorDeTexto({ texto, voz, leer }) {
       const voices = synthesis.getVoices();
 
       // Imprimimos las voces disponibles en la consola
-      console.log(voices);
+      // console.log(voices);
 
       // Buscamos una voz específica en base al prop 'voz'
       const selectedVoice = voices.find(

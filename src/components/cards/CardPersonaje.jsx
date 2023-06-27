@@ -6,8 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ImageIcon from "@mui/icons-material/Image";
+
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -38,23 +37,25 @@ const CardPersonaje = ({
   setLeer,
   setPersonajeSel,
   personajeSel,
+  setTextoLeer,
 }) => {
   const [seccion, setSeccion] = React.useState(0);
   const [isSelected, setIsSelected] = React.useState(false);
 
   React.useEffect(() => {
-    console.log(personajeSel);
+    // console.log(personajeSel);
     if (personajeSel.name == heroe.name) setIsSelected(true);
     else setIsSelected(false);
   }, [personajeSel]);
 
   const handleChangeButtonGrup = (newSeccion) => {
-    console.log(newSeccion.target.value);
+    // console.log(newSeccion.target.value);
     setSeccion(newSeccion.target.value);
   };
 
   const handleLeer = () => {
     setLeer(!leer);
+    setTextoLeer(heroe.description);
   };
 
   return (
@@ -64,7 +65,7 @@ const CardPersonaje = ({
         m: "auto",
       }}
     >
-      <ReproductorDeTexto leer={leer} texto={heroe.description} voz="es-MX" />
+      {/* <ReproductorDeTexto leer={leer} texto={heroe.description} voz="es-MX" /> */}
       <Card>
         <Box>
           {isSelected ? (
