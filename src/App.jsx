@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 import Principal from "./components/Principal";
-import Famosos from "./components/Famosos";
+
 import SeleccionPersonaje from "./components/SeleccionPersonaje";
 import SeleccionAventura from "./components/SeleccionAventura";
 import Aviso from "./components/bars/Aviso";
@@ -31,7 +31,7 @@ function App() {
         justifyContent: "center",
         alignItems: "center",
 
-        height: "90vh",
+        height: "98.5vh",
       }}
     >
       <Typography

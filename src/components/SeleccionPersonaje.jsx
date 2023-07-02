@@ -19,17 +19,16 @@ function SeleccionPersonaje({ setPersonajeSel, personajeSel, setPaso }) {
 
   return (
     <Box
-      width="90%"
-      height="90%"
+      width="80%"
       sx={{
         border: "2px solid #e0e0e0",
         borderRadius: "8px",
         padding: "0rem",
-        pt: "1rem",
+        pt: "0.5rem",
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)", // Agrega una suave sombra
         background: "linear-gradient(to right, #f5f5f5, #ffffff)", // Agrega un degradado de fondo
         m: "auto",
-        maxWidth: 800,
+        maxWidth: 700,
         "@media (max-width: 1000px)": {
           maxWidth: "100%",
         },
