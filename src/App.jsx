@@ -31,7 +31,7 @@ function App() {
         justifyContent: "center",
         alignItems: "center",
 
-        height: "98.5vh",
+        height: "88vh",
       }}
     >
       <Typography

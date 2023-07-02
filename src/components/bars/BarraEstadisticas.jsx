@@ -16,7 +16,8 @@ const BarraEstadisticas = ({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#f1f1f1",
-        padding: "10px",
+        padding: "5px",
+        pl: "5px",
         borderRadius: "5px",
       }}
     >

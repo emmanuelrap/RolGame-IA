@@ -35,7 +35,7 @@ function Principal({
   setPersonajeSel,
   setAventuraSel,
 }) {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Hola");
   const [mensajes, setMensajes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [aventuraDescripcion, setAventuraDescripcion] = useState("");
@@ -145,7 +145,7 @@ function Principal({
   };
 
   return (
-    <Box sx={{ width: "95%", height: "95%" }}>
+    <Box sx={{ width: "95%", height: "90%" }}>
       <BarraEstadisticas
         personajeSel={personajeSel}
         aventuraSel={aventuraSel}

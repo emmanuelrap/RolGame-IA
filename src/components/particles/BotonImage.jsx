@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
 import { aventura1, aventura2, aventura3, aventura4 } from "../../utils/data";
-import { Avatar, Button } from "@mui/material";
+import { Avatar, Button, Container } from "@mui/material";
 
 const images = [
   {
@@ -31,7 +31,7 @@ const images = [
 
 const BotonImage = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
-  height: 180,
+  height: 150,
   [theme.breakpoints.down("sm")]: {
     width: "100% !important", // Overrides inline-style
     height: 140,
@@ -79,7 +79,7 @@ const ImageBackdrop = styled("span")(({ theme }) => ({
   top: 0,
   bottom: 0,
   backgroundColor: theme.palette.common.black,
-  opacity: 0.8,
+  opacity: 0.7,
   transition: theme.transitions.create("opacity"),
 }));
 
@@ -101,37 +101,39 @@ export default function ButtonBases({ setPaso, setAventuraSel, aventuraSel }) {
     setAventuraSel(e.target.innerText);
   };
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", minWidth: 700 }}>
-      {images.map((image) => (
-        <BotonImage
-          id={images.title}
-          onClick={handleClick}
-          focusRipple
-          key={image.title}
-          style={{
-            width: image.width,
-          }}
-        >
-          <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-          <ImageBackdrop className="MuiImageBackdrop-root" />
-          <Image>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              sx={{
-                position: "relative",
-                p: 4,
-                pt: 2,
-                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-              }}
-            >
-              <strong>{image.title}</strong>
-              <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
-          </Image>
-        </BotonImage>
-      ))}
-    </Box>
+    <Container maxWidth={800} sx={{ maxHeight: "600px", overflow: "auto" }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", minWidth: 600 }}>
+        {images.map((image) => (
+          <BotonImage
+            id={images.title}
+            onClick={handleClick}
+            focusRipple
+            key={image.title}
+            style={{
+              width: image.width,
+            }}
+          >
+            <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+            <ImageBackdrop className="MuiImageBackdrop-root" />
+            <Image>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                sx={{
+                  position: "relative",
+                  p: 4,
+                  pt: 2,
+                  pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                }}
+              >
+                <strong>{image.title}</strong>
+                <ImageMarked className="MuiImageMarked-root" />
+              </Typography>
+            </Image>
+          </BotonImage>
+        ))}
+      </Box>
+    </Container>
   );
 }
